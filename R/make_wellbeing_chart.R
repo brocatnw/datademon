@@ -16,7 +16,7 @@ make_wellbeing_charts <- function(data, mygroup, likert_scale) {
                    "Disagree", "Strongly disagree")
   }else if (likert_scale == "agreementNA" ){
     my_levels <- c("Strongly agree", "Agree", "Slightly agree",
-                 "Slightly disagree", "Disagree", "Slightly disagree",
+                 "Slightly disagree", "Disagree", "Strongly disagree",
                  "Don't know/ NA")
   }else if (likert_scale == "class" ){
     my_levels <- c("FY/ freshman", "Sophomore", "Junior", "Senior")
@@ -83,7 +83,7 @@ make_wellbeing_charts <- function(data, mygroup, likert_scale) {
     theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank())+
     scale_fill_wellness()+
     ggtitle(paste0(my_title))+
-    geom_text(aes(label = paste0(round(perc_no_na,1),"%")), nudge_y=3)+
+    geom_text_repel(aes(label = paste0(round(perc_no_na,1),"%")), nudge_y=3)+
     scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
 
 }
